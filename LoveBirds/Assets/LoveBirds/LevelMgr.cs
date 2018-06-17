@@ -102,26 +102,7 @@ public class LevelMgr :MonoBehaviour
     }
 
     
-    public void SwipeLeft()
-    {
-        if (_fsm.State == PlayState.Playing && _way >-2)
-        {
-            _way--;
-            _player.RunActions(new MTMoveBy(MOVE_TIME, -0.5f * _player.transform.right));
-            
-        }
-    }
-
-    public void SwipeRight()
-    {
-        if (_fsm.State == PlayState.Playing && _way <2)
-        {
-            _way++;
-            _player.RunActions(new MTMoveBy(MOVE_TIME, 0.5f * _player.transform.right));
-        }
-    }
-
-    public void OnClick()
+    public void OnClick(Vector3 x)
     {
         if(_fsm.State == PlayState.Ready)
         {
@@ -130,7 +111,7 @@ public class LevelMgr :MonoBehaviour
         else if(_fsm.State == PlayState.Playing)
         {
             Debug.Log("jump");
-            _player.Jump();
+            _player.Jump(x);
         }
     }
 

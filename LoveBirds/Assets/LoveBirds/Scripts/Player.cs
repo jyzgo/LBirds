@@ -9,15 +9,18 @@ public class Player : MonoBehaviour {
 
     // Use this for initialization
     Rigidbody2D _playerRigidbody;
+    Animator _animator;
+
     private void Start()
     {
         _playerRigidbody = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
 
-            Debug.DrawRay(transform.position,Vector3.forward,Color.yellow);
+          
     }
 
     public void SetMoveDirection(Vector3 vec)
@@ -31,26 +34,27 @@ public class Player : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         
-       // Debug.Log("Collision " + collision.gameObject.name);
-        //Ray MyRay = ObjectHit.position - ObjectFalling.position;
-
-        //this will declare a variable which will store information about the object hit
-        RaycastHit MyRayHit;
-        if(Physics.Raycast(transform.position,Vector3.forward,out MyRayHit,0.5f))
-        {
-            if (MyRayHit.collider.gameObject == collision.gameObject)
-            {
-                Debug.Log("hit");
-                Debug.DrawRay(transform.position, Vector3.forward, Color.red, 5f);
-                LevelMgr.Current.ToLose();
-            }
-        }
+   
 
 
     }
 
-    internal void Jump()
+    internal void Jump(Vector3 x)
     {
-        _playerRigidbody.AddForce(Vector2.up * 500f);
+        _playerRigidbody.AddForce(Vector2.up * 200f);
+        Vector2 forward = transform.right;
+        int dir = 1;
+        if (x.x > Screen.width / 2)
+        {
+            dir = -1;
+            transform.localScale = new Vector3(-1, 1, 1);
+        } else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        Vector3 current = _playerRigidbody.velocity;
+        _playerRigidbody.velocity = Vector3.zero;// new Vector3(0, current.y, 0);
+        _playerRigidbody.AddForce(forward * 80f * dir);
+        _animator.SetTrigger("Flap");
     }
 }

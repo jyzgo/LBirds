@@ -49,7 +49,7 @@ public class TouchControl : MonoBehaviour {
         else
         {
             //Debug.Log("No Swipe!");
-            OnClick();
+            OnClick(fingerUp);
         }
 
 
@@ -58,33 +58,26 @@ public class TouchControl : MonoBehaviour {
     private void OnSwipeLeft()
     {
         
-        Debug.Log("Swipe left");
-        LevelMgr.Current.SwipeLeft();
+
 
     }
 
     private void OnSwipeRight()
     {
-        Debug.Log("Swipe right");
-        LevelMgr.Current.SwipeRight();
     }
 
     private void OnSwipeDown()
     {
-        LevelMgr.Current.SwipeLeft();
-        Debug.Log("Swipe down");
     }
 
     private void OnSwipeUp()
     {
-        Debug.Log("Swipe up");
-        LevelMgr.Current.SwipeRight();
     }
 
-    void OnClick()
+    void OnClick(Vector3 x)
     {
         Debug.Log("Click");
-        LevelMgr.Current.OnClick();
+        LevelMgr.Current.OnClick(x);
     }
 
     Vector3 fingerDown;
