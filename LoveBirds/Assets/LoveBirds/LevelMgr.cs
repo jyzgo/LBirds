@@ -110,7 +110,7 @@ public class LevelMgr :MonoBehaviour
         }
         else if(_fsm.State == PlayState.Playing)
         {
-            Debug.Log("jump");
+
             _player.Jump(x);
         }
     }

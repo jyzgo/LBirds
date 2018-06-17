@@ -76,7 +76,7 @@ public class TouchControl : MonoBehaviour {
 
     void OnClick(Vector3 x)
     {
-        Debug.Log("Click");
+
         LevelMgr.Current.OnClick(x);
     }
 
