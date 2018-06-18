@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
+
 using System;
 using MonsterLove.StateMachine;
 using MTUnity.Actions;
