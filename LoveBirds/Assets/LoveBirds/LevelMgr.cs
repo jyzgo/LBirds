@@ -92,7 +92,6 @@ public class LevelMgr :MonoBehaviour
     const float SPEED = 0.05f;
     void Playing_Update()
     {
-        _player.transform.position += _player.transform.forward * SPEED;
     }
 
     public void Touch()
