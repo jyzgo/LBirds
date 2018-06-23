@@ -20,7 +20,14 @@ public class Player : MonoBehaviour {
     private void Update()
     {
         Vector3 speed = _playerRigidbody.velocity;
-
+        float y = speed.y;
+        float x = speed.x;
+        float m = 0;
+        if(x >0.01f || x < -0.01f)
+        {
+            m = y / x * 5;
+        }
+        transform.localEulerAngles = new Vector3(0, 0, m);
           
     }
 
