@@ -21,7 +21,8 @@ public class LevelMgr :MonoBehaviour
 
     public static LevelMgr Current;
 
-    Player _player;
+    public Player _player;
+    public Player _femalePlayer;
     BlockMgr _blockMgr;
 
     StateMachine<PlayState> _fsm;
@@ -30,7 +31,6 @@ public class LevelMgr :MonoBehaviour
     {
         Physics.gravity = new Vector3(0, -30.0F, 0);
         uiMgr = FindObjectOfType<UIMgr>();
-        RegisterPlayer( FindObjectOfType<Player>());
         _blockMgr = FindObjectOfType<BlockMgr>();
         _fsm = StateMachine<PlayState>.Initialize(this, PlayState.Ready);
 
@@ -42,10 +42,7 @@ public class LevelMgr :MonoBehaviour
         Init();
     }
 
-    public void RegisterPlayer(Player p)
-    {
-        _player = p;
-    }
+
 	// Use this for initialization
 	void Start () {
 		
@@ -67,7 +64,7 @@ public class LevelMgr :MonoBehaviour
     private void Reset()
     {
         _blockMgr.Reset();
-        _player.transform.position = new Vector3(0, 1, 0);
+        //_player.transform.position = new Vector3(0, 1, 0);
         _way = 0;
     }
 
@@ -110,19 +107,9 @@ public class LevelMgr :MonoBehaviour
         {
 
             _player.Jump(x);
+            _femalePlayer.Jump(x);
         }
     }
 
-    public void Jumping_Enter()
-    {
-
-        _player.RunActions(new MTRotateBy(0.1f, 0, 90, 0f), new MTCallFunc(ChangeToPlaying));
-    }
-   
-
-    void ChangeToPlaying()
-    {
-        _fsm.ChangeState(PlayState.Playing);
-    }
 }
 

@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[ExecuteInEditMode]
 public class BGResize : MonoBehaviour {
 
     SpriteRenderer sr;
+   
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
