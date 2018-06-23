@@ -19,6 +19,7 @@ public class Player : MonoBehaviour {
 
     private void Update()
     {
+        Vector3 speed = _playerRigidbody.velocity;
 
           
     }
