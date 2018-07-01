@@ -18,6 +18,9 @@ public class Player : MonoBehaviour {
     Animator _animator;
     int _dir = 1;
     float strength = 1;
+
+
+    public AnimationClip[] femalClips;
     private void Awake()
     {
         if(gen == Gender.female)
@@ -25,6 +28,7 @@ public class Player : MonoBehaviour {
             GetComponent<SpriteRenderer>().flipX = false;
             _dir = -1;
             strength = 0.8f;
+
         }
     }
 
